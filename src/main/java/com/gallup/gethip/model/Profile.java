@@ -26,6 +26,10 @@ public class Profile {
 	private String firstName;
 	@DatabaseField(columnName = "last_name")
 	private String lastName;
+	@DatabaseField(columnName = "password")
+	private String password;
+	@DatabaseField(columnName = "salt")
+	private String salt;
 	@DatabaseField(columnName = "created")
 	private Date created;
 	@DatabaseField(columnName = "score")
@@ -35,11 +39,12 @@ public class Profile {
 
 	}
 
-	public Profile(long id, String profileName, String firstName, String lastName, int score) {
+	public Profile(long id, String profileName, String firstName, String lastName, String password, int score) {
 		this.id = id;
 		this.profileName = profileName;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.password = password;
 		this.score = score;
 		this.created = new Date();
 	}
@@ -90,6 +95,22 @@ public class Profile {
 
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
 
 }

@@ -19,6 +19,8 @@ import com.j256.ormlite.dao.Dao;
  */
 public class PaperService {
 
+	private final int NUMBER_OF_PAPERS_IN_RECENT = 10;
+
 	public PaperService() {
 
 	}
@@ -44,6 +46,34 @@ public class PaperService {
 		return paper;
 	}
 
+	public List<Paper> readRecentPapers() {
+		return readAllPapersPaginated(Counter.getNumberOfPapers() - NUMBER_OF_PAPERS_IN_RECENT, NUMBER_OF_PAPERS_IN_RECENT);
+	}
+
+	// TODO this method is going to need vast improvement, we can't just scan through all the papers in the database every time
+	// Might need database restructuring, but for small amounts this will work fine
+	// Furthermore, in order to save processing power "relevance" is gonna be bad because I have it all in one for loop
+	// To increase relevance ordering, we would need each thing in its own for loop
+	public List<Paper> readFilteredPapers(String filterCriteria) {
+		List<Paper> filteredPapers = new ArrayList<Paper>();
+		// Filter at the underscores and the spaces
+		// TODO this current method needs to be changed depending on how its passed in the URL
+		String[] words = filterCriteria.split("_|\\%20");
+
+		List<Paper> allPapers = readAllPapers();
+		for (Paper paper : allPapers) {
+			if (paper.getTitle().equals(filterCriteria)) filteredPapers.add(paper);
+			if (paper.getAuthor().equals(filterCriteria)) filteredPapers.add(paper);
+
+			for (String word : words) {
+				if (paper.getThemes().contains(word)) filteredPapers.add(paper);
+				if (paper.getContent().contains(word)) filteredPapers.add(paper);
+			}
+		}
+
+		return filteredPapers;
+	}
+
 	public List<Paper> readAllPapersForYear(int year) {
 		List<Paper> papersForYear = new ArrayList<Paper>();
 		Calendar cal = Calendar.getInstance();
@@ -61,7 +91,10 @@ public class PaperService {
 		List<Paper> list = null;
 		try {
 			list = getDao().queryForAll();
-			if (start + size > list.size()) return new ArrayList<Paper>();
+			// Avoid IndexOutOfBoundsExceptions
+			if (start < 0) start = 0;
+			if (start + size > list.size()) size = list.size() - start;
+
 			list = list.subList(start, start + size);
 		} catch (SQLException e) {
 			e.printStackTrace();
