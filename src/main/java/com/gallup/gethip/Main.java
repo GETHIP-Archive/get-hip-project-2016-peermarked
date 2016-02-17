@@ -21,12 +21,13 @@ import com.sun.jersey.api.core.ResourceConfig;
 public class Main {
 
 	private static ConnectionSource createDatabaseConnection() {
-		String databaseUrl = "jdbc:mysql://127.0.0.1:3306/peerreview";
+		String databaseUrl = "jdbc:mysql://jgetrost.com:3306/peermarked";
+		//String databaseUrl = "jdbc:mysql://127.0.0.1:3306/peerreview";
 		ConnectionSource connectionSource = null;
 		try {
 			connectionSource = new JdbcConnectionSource(databaseUrl);
-			((JdbcConnectionSource) connectionSource).setUsername("root");
-			((JdbcConnectionSource) connectionSource).setPassword("MyPassword");
+			((JdbcConnectionSource) connectionSource).setUsername("peermarked");
+			((JdbcConnectionSource) connectionSource).setPassword("gethip");
 			DataSourceManager.setConnectionSource(connectionSource);
 		} catch (SQLException e) {
 			e.printStackTrace();

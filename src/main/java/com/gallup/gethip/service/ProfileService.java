@@ -56,7 +56,6 @@ public class ProfileService {
 		}
 		profile.setSalt(hashed[0]);
 		profile.setPassword(hashed[1]);
-		System.out.println("PROFILE NAME: " + profile.getProfileName());
 		profile.setProfileName(profile.getProfileName());
 		
 		try {
