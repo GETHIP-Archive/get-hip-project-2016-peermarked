@@ -1,6 +1,7 @@
 package com.gallup.gethip.resources;
 
 import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -51,6 +52,19 @@ public class PaperResource {
 		paper.addLink(getUriForProfile(uriInfo, paper), "profile");
 		paper.addLink(getUriForComments(uriInfo, paper), "comments");
 		return paperService.readPaper(id);
+	}
+	
+	@GET
+	@Path("/recent")
+	public List<Paper> readRecentPapers() {
+		return paperService.readRecentPapers();
+	}
+	
+	@GET
+	@Path("/filter/{filterCriteria}")
+	public List<Paper> readFilteredPapers(@PathParam("filterCriteria") String filterCriteria) {
+		if(filterCriteria.trim().isEmpty()) return new ArrayList<Paper>();
+		return paperService.readFilteredPapers(filterCriteria);
 	}
 
 	@POST

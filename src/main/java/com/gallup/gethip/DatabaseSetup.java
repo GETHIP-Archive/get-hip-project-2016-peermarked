@@ -37,8 +37,8 @@ public class DatabaseSetup {
 	@SuppressWarnings("unchecked")
 	private void createProfiles(ConnectionSource connectionSource) throws SQLException {
 		ProfileService profileService = new ProfileService();
-		profileService.createProfile(new Profile(1L, "matthew", "Matthew", "Meacham", 100));
-		profileService.createProfile(new Profile(2L, "kaitlyn", "Kaitlyn", "Meacham", 0));
+		profileService.createProfile(new Profile(1L, "matthew", "Matthew", "Meacham", "hunter2", 100));
+		profileService.createProfile(new Profile(2L, "kaitlyn", "Kaitlyn", "Meacham", "hunter3", 0));
 
 		printFields((Profile) DataSourceManager.getInstance().getDao(Profile.class).queryForId(1L));
 		printFields((Profile) DataSourceManager.getInstance().getDao(Profile.class).queryForId(2L));
@@ -67,6 +67,8 @@ public class DatabaseSetup {
 		System.out.println(profile.getProfileName());
 		System.out.println(profile.getFirstName());
 		System.out.println(profile.getLastName());
+		System.out.println(profile.getPassword());
+		System.out.println(profile.getSalt());
 		System.out.println(profile.getScore());
 		System.out.println(profile.getCreated());
 	}

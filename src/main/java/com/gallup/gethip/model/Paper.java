@@ -136,6 +136,7 @@ public class Paper {
 	}
 
 	public void addLink(String url, String rel) {
+		//FIXME fix this
 		// Link link = new Link();
 		// link.setLink(url);
 		// link.setRel(rel);

@@ -16,7 +16,7 @@ public class Counter {
 	private static int numberOfPapers = 0;
 
 	public Counter() {
-		
+
 	}
 
 	public static int getNextProfileId() {
@@ -26,6 +26,14 @@ public class Counter {
 
 	public static int getNextPaperId() {
 		numberOfPapers++;
+		return numberOfPapers;
+	}
+
+	public static int getNumberOfProfiles() {
+		return numberOfProfiles;
+	}
+
+	public static int getNumberOfPapers() {
 		return numberOfPapers;
 	}
 
