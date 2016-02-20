@@ -5,6 +5,7 @@
  |  __/  |  __/ |  __/ | |    | |  | | | (_| | | |    |   <  |  __/ | (_| |
  |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
                                                                            */
+
 .tags {
     float: right;
     width: 10%;
@@ -37,7 +38,7 @@
 #uploadedPapers {
     width: 97%;
     overflow: scroll;
-    height: 200px;
+    height: 300px;
     padding: 1%;
     background-color: #D2C2D6;
     border: 3px solid rgba(0,0,0,0.20);
@@ -78,7 +79,7 @@
     padding: 3%;
     font-size: 25px;
     margin-top: 6%;
-    margin-bottom: 10%;
+    margin-bottom: 20%;
     box-shadow: 10px 10px 35px 0px rgba(0,0,0,0.75);
     color: #2E2E2E;
     float: left;
@@ -103,6 +104,15 @@
     margin-right: -15%;
     margin-top: 60%;
 }*/
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+
+
+
+/*Tablets*/
+@media only screen and (min-width: 40.063em) { 
+
 
 
 

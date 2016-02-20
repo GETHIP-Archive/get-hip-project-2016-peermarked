@@ -20,33 +20,35 @@
 }
 
 body {
-  background-color: #E5DCAE;
+    background-color: #E5DCAE;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 
 /*Navbar*/
 #navBar {
-/*	position: fixed;
-*/	margin: 0 auto;
+	position: fixed;
+	margin: 0 auto;
+    width: 100%;
 }
-
-/*#recent {
-    margin-right: 600px;
-}*/
 
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #00223F;
+    background-color: rgba(0, 34, 63, 0.95);
     font-size: 30px;
 	font-family: 'Lobster', cursive;
 }
 
 li {
     float: left;
-    border-right: 2px solid #E5DCAE;
+    border-right: 2px solid #E5DCAE; 
 }
 
 #signUp {
@@ -89,6 +91,17 @@ a:visited {
     font-size: 35px;
     font-weight: bold;
 }
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+
+
+
+/*Tablets*/
+@media only screen and (min-width: 40.063em) { 
+
+
+
 
 
 
