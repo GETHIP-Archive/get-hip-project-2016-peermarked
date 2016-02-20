@@ -22,17 +22,6 @@
     color: #00a2a2;
 }
 
-#submit {
-    background-color: #00223F;
-    color: #00a2a2;
-    padding: 1%;
-    width: 14%;
-}
-
-#submit:hover {
-    background-color: #053C54;
-}
-
 input {
     background-color: #D2C2D6;
     border-color: rgba(0,0,0,0.20); 
@@ -48,7 +37,7 @@ input:focus {
     outline: none;
 }
 
-#contentSignUp {
+#contentLogin {
     margin: 0 auto;
     width: 65%;
     background-color: #D2C2D6;
@@ -61,7 +50,7 @@ input:focus {
     margin-bottom: 10%;
 }
 
-#signUpInput {
+#loginInput {
     display: block;
     margin: 0 auto;
     width: 50%;
