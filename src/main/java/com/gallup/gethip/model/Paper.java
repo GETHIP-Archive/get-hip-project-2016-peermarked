@@ -36,6 +36,7 @@ public class Paper {
 	@DatabaseField(columnName = "created")
 	private Date created;
 
+	// TODO Fix
 	// @DatabaseField
 	// private List<String> themes = new ArrayList<String>();
 	// @DatabaseField
@@ -54,8 +55,7 @@ public class Paper {
 
 	}
 
-	public Paper(long id, String author, String title, String content, List<String> themes) {
-		this.id = id;
+	public Paper(String author, String title, String content, List<String> themes) {
 		this.author = author;
 		this.title = title;
 		this.content = content;
@@ -113,6 +113,8 @@ public class Paper {
 		this.comments = comments;
 	}
 
+	// Ignore for XML conversions (and JSON)
+	@XmlTransient
 	public Collection<ThemeString> getThemes() {
 		return themes;
 	}
@@ -127,6 +129,8 @@ public class Paper {
 		themes.add(new ThemeString(theme));
 	}
 
+	// Ignore for XML conversions (and JSON)
+	@XmlTransient
 	public Collection<Link> getLinks() {
 		return links;
 	}
@@ -136,11 +140,11 @@ public class Paper {
 	}
 
 	public void addLink(String url, String rel) {
-		//FIXME fix this
-		// Link link = new Link();
-		// link.setLink(url);
-		// link.setRel(rel);
-		// links.add(link);
+		// FIXME fix this
+		Link link = new Link();
+		link.setLink(url);
+		link.setRel(rel);
+		links.add(link);
 	}
 
 }

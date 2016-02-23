@@ -3,6 +3,7 @@ package com.gallup.gethip.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -97,6 +98,8 @@ public class Profile {
 		this.created = created;
 	}
 
+	// Obviously don't send this with a response
+	@XmlTransient
 	public String getPassword() {
 		return password;
 	}
@@ -105,6 +108,7 @@ public class Profile {
 		this.password = password;
 	}
 
+	@XmlTransient
 	public String getSalt() {
 		return salt;
 	}

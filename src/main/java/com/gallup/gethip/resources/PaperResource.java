@@ -48,9 +48,9 @@ public class PaperResource {
 	@Path("/{paperId}")
 	public Paper readPaper(@PathParam("paperId") long id, @Context UriInfo uriInfo) {
 		Paper paper = paperService.readPaper(id);
-		paper.addLink(getUriForSelf(uriInfo, paper), "self");
-		paper.addLink(getUriForProfile(uriInfo, paper), "profile");
-		paper.addLink(getUriForComments(uriInfo, paper), "comments");
+		//paper.addLink(getUriForSelf(uriInfo, paper), "self");
+		//paper.addLink(getUriForProfile(uriInfo, paper), "profile");
+		//paper.addLink(getUriForComments(uriInfo, paper), "comments");
 		return paperService.readPaper(id);
 	}
 	
@@ -73,9 +73,10 @@ public class PaperResource {
 		String newId = String.valueOf(newPaper.getId());
 		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
 
-		newPaper.addLink(getUriForSelf(uriInfo, newPaper), "self");
-		newPaper.addLink(getUriForProfile(uriInfo, newPaper), "profile");
-		newPaper.addLink(getUriForComments(uriInfo, newPaper), "comments");
+		//FIXME
+		//newPaper.addLink(getUriForSelf(uriInfo, newPaper), "self");
+		//newPaper.addLink(getUriForProfile(uriInfo, newPaper), "profile");
+		//newPaper.addLink(getUriForComments(uriInfo, newPaper), "comments");
 
 		return Response.created(uri).entity(newPaper).build();
 	}

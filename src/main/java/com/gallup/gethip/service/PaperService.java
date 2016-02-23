@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.gallup.gethip.Counter;
 import com.gallup.gethip.DataSourceManager;
 import com.gallup.gethip.model.Paper;
 import com.j256.ormlite.dao.Dao;
@@ -47,10 +46,15 @@ public class PaperService {
 	}
 
 	public List<Paper> readRecentPapers() {
-		return readAllPapersPaginated(Counter.getNumberOfPapers() - NUMBER_OF_PAPERS_IN_RECENT, NUMBER_OF_PAPERS_IN_RECENT);
+		try {
+			return readAllPapersPaginated((int) getDao().countOf() - NUMBER_OF_PAPERS_IN_RECENT, NUMBER_OF_PAPERS_IN_RECENT);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return new ArrayList<Paper>();
 	}
 
-	// TODO this method is going to need vast improvement, we can't just scan through all the papers in the database every time
+	// FIXME this method is going to need vast improvement, we can't just scan through all the papers in the database every time
 	// Might need database restructuring, but for small amounts this will work fine
 	// Furthermore, in order to save processing power "relevance" is gonna be bad because I have it all in one for loop
 	// To increase relevance ordering, we would need each thing in its own for loop
@@ -104,8 +108,8 @@ public class PaperService {
 
 	// TODO the create method in Dao is actually a success/failure, so it may be a good idea to return a success/failure response
 	public Paper createPaper(Paper paper) {
-		paper.setId(Counter.getNextPaperId());
 		try {
+			// TODO change back to just create
 			getDao().createIfNotExists(paper);
 		} catch (SQLException e) {
 			e.printStackTrace();

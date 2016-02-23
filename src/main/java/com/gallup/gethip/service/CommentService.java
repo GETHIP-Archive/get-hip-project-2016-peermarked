@@ -28,6 +28,11 @@ public class CommentService {
 	// the resource not found exception
 	private Response response = Response.status(Status.NOT_FOUND).build();
 
+	private final String OPENING_SPAN_TAG = "<span class=\"highlighted\">";
+	private final String CLOSING_SPAN_TAG = "</span>";
+	private final int OPENING_SPAN_TAG_LENGTH = OPENING_SPAN_TAG.length();
+	private final int SPAN_TAGS_LENGTH = OPENING_SPAN_TAG_LENGTH + CLOSING_SPAN_TAG.length();
+
 	public List<Comment> readAllComments(long paperId) {
 		Paper paper = null;
 		try {
@@ -59,16 +64,53 @@ public class CommentService {
 	public Comment createComment(long paperId, Comment comment) {
 		Paper paper = null;
 		try {
+			// TODO the way I am adding the span tags may not be the most inefficient
 			paper = getPaperDao().queryForId(String.valueOf(paperId));
+			int numberOfComments = 0;
+			int total = 0;
+			String content = paper.getContent().replace(CLOSING_SPAN_TAG, "");
+			String[] split = content.split(OPENING_SPAN_TAG);
+			for(int i = 0; i < split.length; i++) {
+				total += split[i].length();
+				if(comment.getIndex() < total) {
+					numberOfComments = i;
+					break;
+				}
+			}
+			
+			int adjustedIndex = comment.getIndex() + (SPAN_TAGS_LENGTH * numberOfComments);
+			
+			StringBuilder builder = new StringBuilder(paper.getContent());
+			builder.insert(adjustedIndex, OPENING_SPAN_TAG);
+			builder.insert(adjustedIndex + OPENING_SPAN_TAG_LENGTH + comment.getLength(), CLOSING_SPAN_TAG);
+
+			paper.setContent(builder.toString());
+
+			getPaperDao().update(paper);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		if (paper == null) throw new WebApplicationException(response);
 
 		Collection<Comment> comments = paper.getComments();
-		comment.setId(comments.size() + 1);
+		// FIXME find a way to set the id, this method is egregious
+		List<Paper> papers = null;
+		try {
+			papers = getPaperDao().queryForAll();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		int totalComments = 0;
+		for(Paper pap : papers) {
+			totalComments += pap.getComments().size();
+		}
+		
+		comment.setId(totalComments + 1);
 		comments.add(comment);
+		
 		paper.setComments(comments);
+		
 		try {
 			getPaperDao().update(paper);
 		} catch (SQLException e) {

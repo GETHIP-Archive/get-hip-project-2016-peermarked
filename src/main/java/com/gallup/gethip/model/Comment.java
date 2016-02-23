@@ -24,6 +24,10 @@ public class Comment {
 	private String comment;
 	@DatabaseField(columnName = "author")
 	private String author;
+	@DatabaseField(columnName = "index")
+	private int index;
+	@DatabaseField(columnName = "length")
+	private int length;
 	@DatabaseField(columnName = "created")
 	private Date created;
 	@DatabaseField(canBeNull = true, foreign = true)
@@ -33,10 +37,12 @@ public class Comment {
 
 	}
 
-	public Comment(long id, String comment, String author) {
+	public Comment(long id, String comment, String author, int index, int length) {
 		this.id = id;
 		this.comment = comment;
 		this.author = author;
+		this.index = index;
+		this.length = length;
 		this.created = new Date();
 	}
 
@@ -70,6 +76,22 @@ public class Comment {
 
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	public void setLength(int length) {
+		this.length = length;
 	}
 
 }

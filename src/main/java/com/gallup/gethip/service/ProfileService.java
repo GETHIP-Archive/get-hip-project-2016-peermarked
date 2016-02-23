@@ -7,7 +7,6 @@ import java.security.SecureRandom;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.gallup.gethip.Counter;
 import com.gallup.gethip.DataSourceManager;
 import com.gallup.gethip.model.Profile;
 import com.j256.ormlite.dao.Dao;
@@ -38,7 +37,10 @@ public class ProfileService {
 	public Profile readProfile(String profileName) {
 		Profile profile = null;
 		try {
-			profile = getDao().queryForEq("profile_name", profileName).get(0);
+			List<Profile> profiles = getDao().queryForEq("profile_name", profileName);
+			if (profiles.size() <= 0) return null;
+			// Should be able to just grab zero because there should only be one profile with the given profile_name because profile names are unique
+			profile = profiles.get(0);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -46,8 +48,6 @@ public class ProfileService {
 	}
 
 	public Profile createProfile(Profile profile) {
-		profile.setId(Counter.getNextProfileId());
-		
 		String[] hashed = null;
 		try {
 			hashed = hashSHA256(profile.getPassword());
@@ -57,11 +57,13 @@ public class ProfileService {
 		profile.setSalt(hashed[0]);
 		profile.setPassword(hashed[1]);
 		profile.setProfileName(profile.getProfileName());
-		
 		try {
-			getDao().createIfNotExists(profile);
+			//TODO probably not the best way to do this, a total query is inefficient, look into countOf
+			profile.setId(getDao().queryForAll().size() + 1);
+			getDao().create(profile);
 		} catch (SQLException e) {
 			e.printStackTrace();
+			return null;
 		}
 		return profile;
 	}
