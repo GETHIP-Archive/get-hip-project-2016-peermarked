@@ -25,7 +25,8 @@ public class DataSourceManager {
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	protected static void addDao(Class daoClass) throws SQLException {
+	public
+	static void addDao(Class daoClass) throws SQLException {
 		daoMap.put(daoClass.getName(), DaoManager.createDao(source, daoClass));
 	}
 
@@ -34,7 +35,7 @@ public class DataSourceManager {
 		return daoMap.get(c.getName());
 	}
 
-	protected static void setConnectionSource(ConnectionSource s) {
+	public static void setConnectionSource(ConnectionSource s) {
 		source = s;
 	}
 }

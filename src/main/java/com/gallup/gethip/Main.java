@@ -66,7 +66,7 @@ public class Main {
 
 	public static final URI BASE_URI = getBaseURI();
 
-	protected static HttpServer startServer() throws IOException {
+	public static HttpServer startServer() throws IOException {
 		ResourceConfig resourceConfig = new PackagesResourceConfig("com.gallup.gethip.resources");
 
 		System.out.println("Starting grizzly2...");

@@ -55,6 +55,7 @@ public class CommentService {
 		}
 		if (paper == null) throw new WebApplicationException(response);
 
+		// TODO 90% positive this will actually throw a null pointer exception before my null check can check
 		Comment comment = paper.getComments().stream().filter(e -> e.getId() == commentId).collect(Collectors.toList()).get(0);
 		if (comment == null) throw new NotFoundException("That resource was not found");
 
@@ -64,22 +65,22 @@ public class CommentService {
 	public Comment createComment(long paperId, Comment comment) {
 		Paper paper = null;
 		try {
-			// TODO the way I am adding the span tags may not be the most inefficient
+			// TODO the way I am adding the span tags may not be the most efficient
 			paper = getPaperDao().queryForId(String.valueOf(paperId));
 			int numberOfComments = 0;
 			int total = 0;
 			String content = paper.getContent().replace(CLOSING_SPAN_TAG, "");
 			String[] split = content.split(OPENING_SPAN_TAG);
-			for(int i = 0; i < split.length; i++) {
+			for (int i = 0; i < split.length; i++) {
 				total += split[i].length();
-				if(comment.getIndex() < total) {
+				if (comment.getIndex() < total) {
 					numberOfComments = i;
 					break;
 				}
 			}
-			
+
 			int adjustedIndex = comment.getIndex() + (SPAN_TAGS_LENGTH * numberOfComments);
-			
+
 			StringBuilder builder = new StringBuilder(paper.getContent());
 			builder.insert(adjustedIndex, OPENING_SPAN_TAG);
 			builder.insert(adjustedIndex + OPENING_SPAN_TAG_LENGTH + comment.getLength(), CLOSING_SPAN_TAG);
@@ -100,17 +101,17 @@ public class CommentService {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		int totalComments = 0;
-		for(Paper pap : papers) {
+		for (Paper pap : papers) {
 			totalComments += pap.getComments().size();
 		}
-		
+
 		comment.setId(totalComments + 1);
 		comments.add(comment);
-		
+
 		paper.setComments(comments);
-		
+
 		try {
 			getPaperDao().update(paper);
 		} catch (SQLException e) {
@@ -120,6 +121,7 @@ public class CommentService {
 		return comment;
 	}
 
+	// TODO we need to change the <span> tags during updating
 	public Comment updateComment(long paperId, Comment comment) {
 		Paper paper = null;
 		try {
@@ -137,6 +139,8 @@ public class CommentService {
 		comments.add(comment);
 
 		try {
+			// TODO need to make sure commentDao is a thing
+			getCommentDao().update(comment);
 			getPaperDao().update(paper);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -145,6 +149,7 @@ public class CommentService {
 		return comment;
 	}
 
+	// TODO we need to remove the <span> tags during deletion
 	public void deleteComment(long paperId, long commentId) {
 		Paper paper = null;
 		try {
@@ -156,9 +161,14 @@ public class CommentService {
 
 		Collection<Comment> comments = paper.getComments();
 		if (commentId <= 0) return;
-		comments.remove(comments.stream().filter(e -> e.getId() == commentId).collect(Collectors.toList()).get(0));
+		Comment comment = comments.stream().filter(e -> e.getId() == commentId).collect(Collectors.toList()).get(0);
+		comments.remove(comment);
+
+		paper.setComments(comments);
 
 		try {
+			// TODO need to make sure this works
+			getCommentDao().delete(comment);
 			getPaperDao().update(paper);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -168,6 +178,12 @@ public class CommentService {
 	@SuppressWarnings("unchecked")
 	private Dao<Paper, String> getPaperDao() {
 		Dao<Paper, String> dao = DataSourceManager.getInstance().getDao(Paper.class);
+		return dao;
+	}
+
+	@SuppressWarnings("unchecked")
+	private Dao<Comment, Long> getCommentDao() {
+		Dao<Comment, Long> dao = DataSourceManager.getInstance().getDao(Comment.class);
 		return dao;
 	}
 

@@ -18,7 +18,7 @@ import com.j256.ormlite.dao.Dao;
  */
 public class PaperService {
 
-	private final int NUMBER_OF_PAPERS_IN_RECENT = 10;
+	final int NUMBER_OF_PAPERS_IN_RECENT = 10;
 
 	public PaperService() {
 
@@ -109,6 +109,7 @@ public class PaperService {
 	// TODO the create method in Dao is actually a success/failure, so it may be a good idea to return a success/failure response
 	public Paper createPaper(Paper paper) {
 		try {
+			paper.setId(getDao().countOf() + 1L);
 			// TODO change back to just create
 			getDao().createIfNotExists(paper);
 		} catch (SQLException e) {
