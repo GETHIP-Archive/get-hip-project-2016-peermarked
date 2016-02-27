@@ -48,7 +48,7 @@ public class PaperResource {
 			};
 		}
 
-		Response response = Response.ok().entity(entity).header("Access-Control-Allow-Origin", "*").build();
+		Response response = Response.ok().entity(entity).build();
 		return response;
 	}
 
@@ -60,7 +60,7 @@ public class PaperResource {
 		paper.addLink(getUriForSelf(uriInfo, paper), "self");
 		paper.addLink(getUriForProfile(uriInfo, paper), "profile");
 		paper.addLink(getUriForComments(uriInfo, paper), "comments");
-		Response response = Response.ok().entity(paper).header("Access-Control-Allow-Origin", "*").build();
+		Response response = Response.ok().entity(paper).build();
 		return response;
 	}
 
@@ -71,7 +71,7 @@ public class PaperResource {
 
 		};
 
-		Response response = Response.ok().entity(entity).header("Access-Control-Allow-Origin", "*").build();
+		Response response = Response.ok().entity(entity).build();
 		return response;
 	}
 
@@ -82,13 +82,13 @@ public class PaperResource {
 		if (filterCriteria.trim().isEmpty()) {
 			entity = new GenericEntity<List<Paper>>(new ArrayList<Paper>()) {
 			};
-			return Response.status(400).entity(entity).header("Access-Control-Allow-Origin", "*").build();
+			return Response.status(400).entity(entity).build();
 		}
 
 		entity = new GenericEntity<List<Paper>>(paperService.readFilteredPapers(filterCriteria)) {
 		};
 
-		return Response.ok().entity(entity).header("Access-Control-Allow-Origin", "*").build();
+		return Response.ok().entity(entity).build();
 	}
 
 	@POST
@@ -108,7 +108,7 @@ public class PaperResource {
 	@Path("/{paperId}")
 	public Response updatePaper(@PathParam("paperId") long id, Paper paper) {
 		paper.setId(id);
-		Response response = Response.ok().entity(paperService.updatePaper(paper)).header("Access-Control-Allow-Origin", "*").build();
+		Response response = Response.ok().entity(paperService.updatePaper(paper)).build();
 		return response;
 	}
 
