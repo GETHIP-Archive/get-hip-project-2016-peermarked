@@ -37,11 +37,19 @@ public class PaperResource {
 	private PaperService paperService = new PaperService();
 
 	@GET
-	public List<Paper> readAllPapers(@QueryParam("year") int year, @QueryParam("start") int start, @QueryParam("size") int size) {
-		if (year > 0) return paperService.readAllPapersForYear(year);
-		if (start >= 0 && size > 0) return paperService.readAllPapersPaginated(start, size);
+	public Response readAllPapers(@QueryParam("year") int year, @QueryParam("start") int start, @QueryParam("size") int size) {
+		GenericEntity<List<Paper>> entity = null;
+		if (year > 0) {
+			entity = new GenericEntity<List<Paper>>(paperService.readAllPapersForYear(year)) {
+			};
+		}
+		if (start >= 0 && size > 0) {
+			entity = new GenericEntity<List<Paper>>(paperService.readAllPapersPaginated(start, size)) {
+			};
+		}
 
-		return paperService.readAllPapers();
+		Response response = Response.ok().entity(entity).header("Access-Control-Allow-Origin", "*").build();
+		return response;
 	}
 
 	// TODO for all these read methods in resource, we need to add to the links
@@ -62,16 +70,25 @@ public class PaperResource {
 		GenericEntity<List<Paper>> entity = new GenericEntity<List<Paper>>(paperService.readRecentPapers()) {
 
 		};
-		
+
 		Response response = Response.ok().entity(entity).header("Access-Control-Allow-Origin", "*").build();
 		return response;
 	}
 
 	@GET
 	@Path("/filter/{filterCriteria}")
-	public List<Paper> readFilteredPapers(@PathParam("filterCriteria") String filterCriteria) {
-		if (filterCriteria.trim().isEmpty()) return new ArrayList<Paper>();
-		return paperService.readFilteredPapers(filterCriteria);
+	public Response readFilteredPapers(@PathParam("filterCriteria") String filterCriteria) {
+		GenericEntity<List<Paper>> entity = null;
+		if (filterCriteria.trim().isEmpty()) {
+			entity = new GenericEntity<List<Paper>>(new ArrayList<Paper>()) {
+			};
+			return Response.status(400).entity(entity).header("Access-Control-Allow-Origin", "*").build();
+		}
+
+		entity = new GenericEntity<List<Paper>>(paperService.readFilteredPapers(filterCriteria)) {
+		};
+
+		return Response.ok().entity(entity).header("Access-Control-Allow-Origin", "*").build();
 	}
 
 	@POST
@@ -89,9 +106,10 @@ public class PaperResource {
 
 	@PUT
 	@Path("/{paperId}")
-	public Paper updatePaper(@PathParam("paperId") long id, Paper paper) {
+	public Response updatePaper(@PathParam("paperId") long id, Paper paper) {
 		paper.setId(id);
-		return paperService.updatePaper(paper);
+		Response response = Response.ok().entity(paperService.updatePaper(paper)).header("Access-Control-Allow-Origin", "*").build();
+		return response;
 	}
 
 	@DELETE
