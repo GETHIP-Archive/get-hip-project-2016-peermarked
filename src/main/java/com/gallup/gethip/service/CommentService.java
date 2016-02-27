@@ -28,7 +28,7 @@ public class CommentService {
 	// the resource not found exception
 	private Response response = Response.status(Status.NOT_FOUND).build();
 
-	private final String OPENING_SPAN_TAG = "<span class=\"highlighted\">";
+	private final String OPENING_SPAN_TAG = "<span class=\"highlight\">";
 	private final String CLOSING_SPAN_TAG = "</span>";
 	private final int OPENING_SPAN_TAG_LENGTH = OPENING_SPAN_TAG.length();
 	private final int SPAN_TAGS_LENGTH = OPENING_SPAN_TAG_LENGTH + CLOSING_SPAN_TAG.length();
