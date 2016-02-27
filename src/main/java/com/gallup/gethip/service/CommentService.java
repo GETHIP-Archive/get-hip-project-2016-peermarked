@@ -46,7 +46,6 @@ public class CommentService {
 	}
 
 	public Comment readComment(long paperId, long commentId) {
-		// TODO really should use custom error responses
 		Paper paper = null;
 		try {
 			paper = getPaperDao().queryForId(String.valueOf(paperId));
@@ -55,11 +54,10 @@ public class CommentService {
 		}
 		if (paper == null) throw new WebApplicationException(response);
 
-		// TODO 90% positive this will actually throw a null pointer exception before my null check can check
-		Comment comment = paper.getComments().stream().filter(e -> e.getId() == commentId).collect(Collectors.toList()).get(0);
-		if (comment == null) throw new NotFoundException("That resource was not found");
+		List<Comment> comments = paper.getComments().stream().filter(e -> e.getId() == commentId).collect(Collectors.toList());
+		if (comments.get(0) == null) throw new NotFoundException("That resource was not found");
 
-		return comment;
+		return comments.get(0);
 	}
 
 	public Comment createComment(long paperId, Comment comment) {
@@ -108,6 +106,8 @@ public class CommentService {
 		}
 
 		comment.setId(totalComments + 1);
+		// here is where it ends, ^ all that needs to be redone
+
 		comments.add(comment);
 
 		paper.setComments(comments);
@@ -139,7 +139,6 @@ public class CommentService {
 		comments.add(comment);
 
 		try {
-			// TODO need to make sure commentDao is a thing
 			getCommentDao().update(comment);
 			getPaperDao().update(paper);
 		} catch (SQLException e) {
@@ -167,7 +166,6 @@ public class CommentService {
 		paper.setComments(comments);
 
 		try {
-			// TODO need to make sure this works
 			getCommentDao().delete(comment);
 			getPaperDao().update(paper);
 		} catch (SQLException e) {

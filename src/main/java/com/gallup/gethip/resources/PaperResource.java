@@ -14,6 +14,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
@@ -46,24 +47,30 @@ public class PaperResource {
 	// TODO for all these read methods in resource, we need to add to the links
 	@GET
 	@Path("/{paperId}")
-	public Paper readPaper(@PathParam("paperId") long id, @Context UriInfo uriInfo) {
+	public Response readPaper(@PathParam("paperId") long id, @Context UriInfo uriInfo) {
 		Paper paper = paperService.readPaper(id);
-		//paper.addLink(getUriForSelf(uriInfo, paper), "self");
-		//paper.addLink(getUriForProfile(uriInfo, paper), "profile");
-		//paper.addLink(getUriForComments(uriInfo, paper), "comments");
-		return paperService.readPaper(id);
+		paper.addLink(getUriForSelf(uriInfo, paper), "self");
+		paper.addLink(getUriForProfile(uriInfo, paper), "profile");
+		paper.addLink(getUriForComments(uriInfo, paper), "comments");
+		Response response = Response.ok().entity(paper).header("Access-Control-Allow-Origin", "*").build();
+		return response;
 	}
-	
+
 	@GET
 	@Path("/recent")
-	public List<Paper> readRecentPapers() {
-		return paperService.readRecentPapers();
+	public Response readRecentPapers() {
+		GenericEntity<List<Paper>> entity = new GenericEntity<List<Paper>>(paperService.readRecentPapers()) {
+
+		};
+		
+		Response response = Response.ok().entity(entity).header("Access-Control-Allow-Origin", "*").build();
+		return response;
 	}
-	
+
 	@GET
 	@Path("/filter/{filterCriteria}")
 	public List<Paper> readFilteredPapers(@PathParam("filterCriteria") String filterCriteria) {
-		if(filterCriteria.trim().isEmpty()) return new ArrayList<Paper>();
+		if (filterCriteria.trim().isEmpty()) return new ArrayList<Paper>();
 		return paperService.readFilteredPapers(filterCriteria);
 	}
 
@@ -73,11 +80,10 @@ public class PaperResource {
 		String newId = String.valueOf(newPaper.getId());
 		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
 
-		//FIXME
-		//newPaper.addLink(getUriForSelf(uriInfo, newPaper), "self");
-		//newPaper.addLink(getUriForProfile(uriInfo, newPaper), "profile");
-		//newPaper.addLink(getUriForComments(uriInfo, newPaper), "comments");
-
+		// FIXME
+		// newPaper.addLink(getUriForSelf(uriInfo, newPaper), "self");
+		// newPaper.addLink(getUriForProfile(uriInfo, newPaper), "profile");
+		// newPaper.addLink(getUriForComments(uriInfo, newPaper), "comments");
 		return Response.created(uri).entity(newPaper).build();
 	}
 

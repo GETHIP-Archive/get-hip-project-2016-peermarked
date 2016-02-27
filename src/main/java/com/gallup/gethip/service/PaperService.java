@@ -2,7 +2,9 @@ package com.gallup.gethip.service;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import com.gallup.gethip.DataSourceManager;
@@ -34,7 +36,6 @@ public class PaperService {
 		return papers;
 	}
 
-	// TODO for all read methods, I need to have a DataNotFoundException (custom-made) thrown
 	public Paper readPaper(long id) {
 		Paper paper = null;
 		try {
@@ -64,13 +65,15 @@ public class PaperService {
 		// TODO this current method needs to be changed depending on how its passed in the URL
 		String[] words = filterCriteria.split("_|\\%20");
 
+		System.out.println(Arrays.asList(words));
+
 		List<Paper> allPapers = readAllPapers();
 		for (Paper paper : allPapers) {
 			if (paper.getTitle().equals(filterCriteria)) filteredPapers.add(paper);
 			if (paper.getAuthor().equals(filterCriteria)) filteredPapers.add(paper);
 
 			for (String word : words) {
-				if (paper.getThemes().contains(word)) filteredPapers.add(paper);
+				// if (paper.getThemes().contains(word)) filteredPapers.add(paper);
 				if (paper.getContent().contains(word)) filteredPapers.add(paper);
 			}
 		}
@@ -108,6 +111,7 @@ public class PaperService {
 
 	// TODO the create method in Dao is actually a success/failure, so it may be a good idea to return a success/failure response
 	public Paper createPaper(Paper paper) {
+		paper.setCreated(new Date());
 		try {
 			paper.setId(getDao().countOf() + 1L);
 			// TODO change back to just create

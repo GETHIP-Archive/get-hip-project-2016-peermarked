@@ -58,8 +58,7 @@ public class ProfileService {
 		profile.setPassword(hashed[1]);
 		profile.setProfileName(profile.getProfileName());
 		try {
-			//TODO probably not the best way to do this, a total query is inefficient, look into countOf
-			profile.setId(getDao().queryForAll().size() + 1);
+			profile.setId(getDao().countOf() + 1L);
 			getDao().create(profile);
 		} catch (SQLException e) {
 			e.printStackTrace();

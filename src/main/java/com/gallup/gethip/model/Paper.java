@@ -35,15 +35,6 @@ public class Paper {
 	private String content;
 	@DatabaseField(columnName = "created")
 	private Date created;
-
-	// TODO Fix
-	// @DatabaseField
-	// private List<String> themes = new ArrayList<String>();
-	// @DatabaseField
-	// private Map<Long, Comment> comments = new HashMap<Long, Comment>();
-	// @DatabaseField
-	// private List<Link> links = new ArrayList<Link>();
-
 	@ForeignCollectionField(eager = false)
 	Collection<ThemeString> themes = new ArrayList<ThemeString>();
 	@ForeignCollectionField(eager = false)
@@ -140,11 +131,11 @@ public class Paper {
 	}
 
 	public void addLink(String url, String rel) {
-		// FIXME fix this
-		Link link = new Link();
-		link.setLink(url);
-		link.setRel(rel);
-		links.add(link);
+		// TODO fix this
+		// Link link = new Link();
+		// link.setLink(url);
+		// link.setRel(rel);
+		// links.add(link);
 	}
 
 }

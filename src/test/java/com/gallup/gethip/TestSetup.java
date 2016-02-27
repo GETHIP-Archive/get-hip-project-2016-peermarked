@@ -17,7 +17,6 @@ public class TestSetup {
 	}
 
 	private static ConnectionSource createDatabaseConnection() {
-		// TODO currently this runs off a local database for testing
 		String databaseUrl = "jdbc:mysql://jgetrost.com:3306/peermarked";
 		// String databaseUrl = "jdbc:mysql://127.0.0.1:3306/peerreview";
 		ConnectionSource connectionSource = null;
