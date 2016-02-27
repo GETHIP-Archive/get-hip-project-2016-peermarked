@@ -6,7 +6,7 @@
  |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
                                                                            */
 
-.title {
+.title, #typewriter {
     display: block;
     font-size: 4rem;
     text-align: center;
@@ -31,7 +31,9 @@ html, body {
 
 /*Navbar*/
 #navBar {
-	position: fixed;
+    position: fixed;
+    left: 0;
+    top: 0;
 	margin: 0 auto;
     width: 100%;
 }
@@ -44,6 +46,12 @@ ul {
     background-color: rgba(0, 34, 63, 0.95);
     font-size: 30px;
 	font-family: 'Lobster', cursive;
+}
+
+#menu {
+    width:30px; 
+    height:100%;
+    vertical-align: text-center;
 }
 
 li {
@@ -78,13 +86,10 @@ li a:hover:not(.active) {
 
 a:link {
 	text-decoration: none;
-/*	color: #00a2a2;
-*/}
+}
 
 a:visited {
 	text-decoration: none;
-/*	color: #00a2a2;
-*/
 }
 
 .subTitle {
@@ -95,10 +100,19 @@ a:visited {
 /* Small devices (tablets, 768px and up) */
 @media only screen and (max-width: 768px) {
 
+ ul {
+    font-size: 20px;
+ }
 
 
-/*Tablets*/
-@media only screen and (min-width: 40.063em) { 
+
+
+
+
+}
+
+
+
 
 
 

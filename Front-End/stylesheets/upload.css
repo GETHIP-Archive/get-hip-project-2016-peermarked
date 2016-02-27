@@ -6,8 +6,20 @@
  |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
                                                                            */
 
-pre{
-    white-space: pre-wrap;
+input {
+    background-color: #d9d9d9;
+    border-color: rgba(0,0,0,0.20); 
+    border-width: 3px; 
+    border-style: solid; 
+    box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.30); 
+    font-size: 25px; 
+    padding: 2%; 
+    width: 100%;
+    border-radius: 10px;
+}
+
+input:focus {
+    outline: none;
 }
 
 #content {

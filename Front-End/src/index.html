@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <head>
 	<title>PeerMarked</title>
+	<meta charset='utf-8'>
+   	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
@@ -17,6 +20,31 @@
 
 <body>
 
+<!-- <div id="cssmenu">
+<ul>
+   <li><a href="#">Home</a></li>
+   <li class="active"><a href="#">Products</a>
+      <ul>
+         <li><a href="#">Product 1</a>
+            <ul>
+               <li><a href="#">Sub Product</a></li>
+               <li><a href="#">Sub Product</a></li>
+            </ul>
+         </li>
+         <li><a href="#">Product 2</a>
+            <ul>
+               <li><a href="#">Sub Product</a></li>
+               <li><a href="#">Sub Product</a></li>
+            </ul>
+         </li>
+      </ul>
+   </li>
+   <li><a href="#">About</a></li>
+   <li><a href="#">Contact</a></li>
+</ul>
+</div> -->
+
+
 	<div id="navBar">
 		<ul>
 			<li><a class="active" href="index.html">PeerMarked</a></li>
@@ -31,13 +59,24 @@
 		</ul>
 	</div>
 
+	<div id="mobileNav">
+		<ul>
+			<li><a class="active" href="index.html">PeerMarked</a></li>
+
+			<div style="float:right;list-style-type:none;">
+				<li id="signUp"><a href="signUp.html"><img src="../images/menu.png" id="menu"#>Menu</a></li>
+			</div>
+		</ul>
+	</div>
+
+
 	<p id="comment1">Here in the sidebar is where one can leave a comment critiquing and giving feedback on an essay. Each side comment will be lined up with the area or line of the work that needs the feedback. You may also highlight sections of the work and the comment will appear beside the highlighted area.</p>
 
 
 	<div id="contentMP">
-		<h1 class="title">PeerMarked</h1>
+		<div id="typewriter"></div>
 
-		<p>Peermarked is a service where one can submit essays, writings and other works to be given feed back by other website users.<span class="highlight"> You can make </span> an essay you submit part of a classroom with your tecahers and classmates, or  you may submit it to the gerneral public.You can allow people to edit it or just allow people to give you feedback, by leaving comments in the side bar, or highlighting sections that need work.</p>
+		<p>Peermarked is a service where one can submit essays, writings and other works to be given feed back by other website users.<span id="highlightAnimation"> You can make </span> an essay you submit part of a classroom with your tecahers and classmates, or  you may submit it to the gerneral public.You can allow people to edit it or just allow people to give you feedback, by leaving comments in the side bar, or highlighting sections that need work.</p>
 		
 		<p>Peemarked in a service made for and by students. It is intended to be a way to recive critisism on a work, from people with many differnt points of views, levels of intellect, cultural backrounds, and knowledge and experience writing. Peermarked gives an oppurtunity for work to be looked upon with a frsh set of eyes, therefore helping one get the most out of their writing.</p>
 
@@ -65,8 +104,8 @@
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles"> 
-					<span class="tags"><a class="tag" href="#">JavaScript</a>, <a class="tag" href="#">Computers</a>, <a class="tag" href="#">Programing</a></span> 
-					JavaScript Functions <br>
+<!-- 					<span class="tags"><a class="tag" href="#">JavaScript</a>, <a class="tag" href="#">Computers</a>, <a class="tag" href="#">Programing</a></span> 
+ -->					JavaScript Functions <br>
 					<span class="author">by <a class="tag" href="#">Jared_Bledsoe</a></span>
 				</p>
 				<hr>
@@ -74,8 +113,8 @@
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles">
-					<span class="tags"><a class="tag" href="#">Please</a>, <a class="tag" href="#">Help</a>, <a class="tag" href="#">Me</a></span>
-					Help Me <br>
+<!-- 					<span class="tags"><a class="tag" href="#">Please</a>, <a class="tag" href="#">Help</a>, <a class="tag" href="#">Me</a></span>
+ -->					Help Me <br>
 					<span class="author">by <a class="tag" href="#">ImBeingHeldHostage528</a></span>
 				</p>
 				<hr>
@@ -83,8 +122,8 @@
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles">
-					<span class="tags"><a class="tag" href="#">Lorem</a>, <a class="tag" href="#">Ipsum</a>, <a class="tag" href="#">Dormet</a></span>
-					Lorem Ipsum <br>
+<!-- 					<span class="tags"><a class="tag" href="#">Lorem</a>, <a class="tag" href="#">Ipsum</a>, <a class="tag" href="#">Dormet</a></span>
+ -->					Lorem Ipsum <br>
 					<span class="author">by <a class="tag" href="#">H.Rackham</a></span>
 				</p>
 				<hr>
@@ -92,8 +131,8 @@
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles">
-					<span class="tags"><a class="tag" href="#">Spanish</a>, <a class="tag" href="#">Teacher</a></span>
-					Como Estas? <br>
+<!-- 					<span class="tags"><a class="tag" href="#">Spanish</a>, <a class="tag" href="#">Teacher</a></span>
+ -->					Como Estas? <br>
 					<span class="author">by <a class="tag" href="#">SavvySpanishTeacher09</a></span>
 				</p>
 				<hr>
@@ -101,8 +140,8 @@
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles">
-					<span class="tags"><a class="tag" href="#">English</a>, <a class="tag" href="#">Spelling</a>, <a class="tag" href="#">Grammar</a></span>
-					Hwo too spell betterer <br>
+<!-- 					<span class="tags"><a class="tag" href="#">English</a>, <a class="tag" href="#">Spelling</a>, <a class="tag" href="#">Grammar</a></span>
+ -->					Hwo too spell betterer <br>
 					<span class="author">by <a class="tag" href="#">Jraed_Beldoes</a></span>
 				</p>
 				<hr>
@@ -110,15 +149,15 @@
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles">
-					<span class="tags"><a class="tag" href="#">Java</a>, <a class="tag" href="#">Programming</a>, <a class="tag" href="#">Computers</a></span>
-					A Guide on How to Be a Better Java Programmer <br>
+<!-- 					<span class="tags"><a class="tag" href="#">Java</a>, <a class="tag" href="#">Programming</a>, <a class="tag" href="#">Computers</a></span>
+ -->					A Guide on How to Be a Better Java Programmer <br>
 					<span class="author">by <a class="tag" href="#">xXMatthew_Meacham9481Xx</a></span></p>
 				<hr>
 			</div>
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles">
-					<span class="tags"><a class="tag" href="#">Lorem</a>, <a class="tag" href="#">Ipsum</a>, <a class="tag" href="#">Dormet</a></span>
+					<!-- <span class="tags"><a class="tag" href="#">Lorem</a>, <a class="tag" href="#">Ipsum</a>, <a class="tag" href="#">Dormet</a></span> -->
 					Lorem Ipsum (Pt. 2) <br>
 					<span class="author">by <a class="tag" href="#">Jared_Bledsoe</a></span>
 				</p>
@@ -127,8 +166,8 @@
 
 			<div class="uploadedContent">
 				<p href="#" class="paperTitles">
-					<span class="tags"><a class="tag" href="#">Books</a>, <a class="tag" href="#">Classics</a></span>
-					How to Properly Kill Two Birds With One Stone (Pt.4) <br>
+<!-- 					<span class="tags"><a class="tag" href="#">Books</a>, <a class="tag" href="#">Classics</a></span>
+ -->					How to Properly Kill Two Birds With One Stone (Pt.4) <br>
 					<span class="author">by <a class="tag" href="#">joe</a></span>
 				</p>
 				<hr>
