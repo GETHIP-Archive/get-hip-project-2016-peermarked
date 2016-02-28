@@ -121,7 +121,6 @@ public class Paper {
 	}
 
 	// Ignore for XML conversions (and JSON)
-	@XmlTransient
 	public Collection<Link> getLinks() {
 		return links;
 	}
@@ -132,10 +131,10 @@ public class Paper {
 
 	public void addLink(String url, String rel) {
 		// TODO fix this
-		// Link link = new Link();
-		// link.setLink(url);
-		// link.setRel(rel);
-		// links.add(link);
+		Link link = new Link();
+		link.setLink(url);
+		link.setRel(rel);
+		links.add(link);
 	}
 
 }

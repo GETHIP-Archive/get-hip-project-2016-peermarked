@@ -1,5 +1,6 @@
 package com.gallup.gethip.resources;
 
+import java.net.URI;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -10,7 +11,11 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 
 import com.gallup.gethip.model.Profile;
 import com.gallup.gethip.service.ProfileService;
@@ -30,26 +35,49 @@ public class ProfileResource {
 	private ProfileService profileService = new ProfileService();
 
 	@GET
-	public List<Profile> readAllProfiles() {
-		return profileService.readAllProfiles();
+	public Response readAllProfiles() {
+		GenericEntity<List<Profile>> entity = new GenericEntity<List<Profile>>(profileService.readAllProfiles()) {
+		};
+		return Response.ok().entity(entity).build();
 	}
 
 	@GET
 	@Path("/{profileName}")
-	public Profile readProfile(@PathParam("profileName") String profileName) {
-		return profileService.readProfile(profileName);
+	public Response readProfile(@PathParam("profileName") String profileName) {
+		Profile profile = profileService.readProfile(profileName);
+
+		Response response;
+		if (profile == null) response = Response.noContent().build();
+		else response = Response.ok().entity(profile).build();
+
+		return response;
 	}
 
 	@POST
-	public Profile createProfile(Profile profile) {
-		return profileService.createProfile(profile);
+	public Response createProfile(Profile profile, @Context UriInfo uriInfo) {
+		Profile newProfile = profileService.createProfile(profile);
+
+		Response response;
+		if (newProfile == null) response = Response.noContent().build();
+		else {
+			URI uri = uriInfo.getAbsolutePathBuilder().path(String.valueOf(newProfile.getId())).build();
+			response = Response.created(uri).entity(profileService.createProfile(profile)).build();
+		}
+
+		return response;
 	}
 
 	@PUT
 	@Path("/{profileName}")
-	public Profile updateProfile(@PathParam("profileName") String profileName, Profile profile) {
+	public Response updateProfile(@PathParam("profileName") String profileName, Profile profile) {
 		profile.setProfileName(profileName);
-		return profileService.updateProfile(profile);
+		Profile newProfile = profileService.updateProfile(profile);
+
+		Response response;
+		if (newProfile == null) response = Response.noContent().build();
+		else response = Response.ok().entity(newProfile).build();
+
+		return response;
 	}
 
 	@DELETE

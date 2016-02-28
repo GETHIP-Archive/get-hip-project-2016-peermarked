@@ -57,10 +57,17 @@ public class PaperResource {
 	@Path("/{paperId}")
 	public Response readPaper(@PathParam("paperId") long id, @Context UriInfo uriInfo) {
 		Paper paper = paperService.readPaper(id);
-		paper.addLink(getUriForSelf(uriInfo, paper), "self");
-		paper.addLink(getUriForProfile(uriInfo, paper), "profile");
-		paper.addLink(getUriForComments(uriInfo, paper), "comments");
-		Response response = Response.ok().entity(paper).build();
+
+		Response response;
+		if (paper == null) response = Response.noContent().build();
+		else {
+			// FIXME these need to be fixed
+			// paper.addLink(getUriForSelf(uriInfo, paper), "self");
+			// paper.addLink(getUriForProfile(uriInfo, paper), "profile");
+			// paper.addLink(getUriForComments(uriInfo, paper), "comments");
+			response = Response.ok().entity(paper).build();
+		}
+
 		return response;
 	}
 
@@ -94,21 +101,32 @@ public class PaperResource {
 	@POST
 	public Response createPaper(Paper paper, @Context UriInfo uriInfo) {
 		Paper newPaper = paperService.createPaper(paper);
-		String newId = String.valueOf(newPaper.getId());
-		URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
 
-		// FIXME
-		// newPaper.addLink(getUriForSelf(uriInfo, newPaper), "self");
-		// newPaper.addLink(getUriForProfile(uriInfo, newPaper), "profile");
-		// newPaper.addLink(getUriForComments(uriInfo, newPaper), "comments");
-		return Response.created(uri).entity(newPaper).build();
+		Response response;
+		if (newPaper == null) response = Response.noContent().build();
+		else {
+			String newId = String.valueOf(newPaper.getId());
+			URI uri = uriInfo.getAbsolutePathBuilder().path(newId).build();
+
+			// FIXME
+			// newPaper.addLink(getUriForSelf(uriInfo, newPaper), "self");
+			// newPaper.addLink(getUriForProfile(uriInfo, newPaper), "profile");
+			// newPaper.addLink(getUriForComments(uriInfo, newPaper), "comments");
+			response = Response.created(uri).entity(newPaper).build();
+		}
+		return response;
 	}
 
 	@PUT
 	@Path("/{paperId}")
 	public Response updatePaper(@PathParam("paperId") long id, Paper paper) {
 		paper.setId(id);
-		Response response = Response.ok().entity(paperService.updatePaper(paper)).build();
+		Paper newPaper = paperService.updatePaper(paper);
+
+		Response response;
+		if (newPaper == null) response = Response.noContent().build();
+		else response = Response.ok().entity(newPaper).build();
+
 		return response;
 	}
 

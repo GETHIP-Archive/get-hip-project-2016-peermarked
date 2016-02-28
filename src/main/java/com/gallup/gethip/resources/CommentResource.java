@@ -10,7 +10,9 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import com.gallup.gethip.model.Comment;
 import com.gallup.gethip.service.CommentService;
@@ -30,26 +32,48 @@ public class CommentResource {
 	private CommentService commentService = new CommentService();
 
 	@GET
-	public List<Comment> readAllComments(@PathParam("paperId") long paperId) {
-		return commentService.readAllComments(paperId);
+	public Response readAllComments(@PathParam("paperId") long paperId) {
+		GenericEntity<List<Comment>> entity = new GenericEntity<List<Comment>>(commentService.readAllComments(paperId)) {
+		};
+		Response response = Response.ok().entity(entity).build();
+		return response;
 	}
 
 	@GET
 	@Path("/{commentId}")
-	public Comment readComment(@PathParam("paperId") long paperId, @PathParam("commentId") long commentId) {
-		return commentService.readComment(paperId, commentId);
+	public Response readComment(@PathParam("paperId") long paperId, @PathParam("commentId") long commentId) {
+		Comment comment = commentService.readComment(paperId, commentId);
+
+		Response response;
+		if (comment == null) response = Response.noContent().build();
+		else response = Response.ok().entity(comment).build();
+
+		return response;
 	}
 
 	@POST
-	public Comment createComment(@PathParam("paperId") long paperId, Comment comment) {
-		return commentService.createComment(paperId, comment);
+	public Response createComment(@PathParam("paperId") long paperId, Comment comment) {
+		Comment newComment = commentService.createComment(paperId, comment);
+
+		Response response;
+		if (newComment == null) response = Response.noContent().build();
+		else response = Response.ok().entity(newComment).build();
+
+		return response;
 	}
 
 	@PUT
 	@Path("/{commentId}")
-	public Comment updateComment(@PathParam("paperId") long paperId, @PathParam("commentId") long id, Comment comment) {
+	public Response updateComment(@PathParam("paperId") long paperId, @PathParam("commentId") long id, Comment comment) {
 		comment.setId(id);
-		return commentService.updateComment(paperId, comment);
+
+		Comment newComment = commentService.updateComment(paperId, comment);
+
+		Response response;
+		if (newComment == null) response = Response.noContent().build();
+		else response = Response.ok().entity(newComment).build();
+
+		return response;
 	}
 
 	@DELETE
