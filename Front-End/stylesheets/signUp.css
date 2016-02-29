@@ -80,6 +80,10 @@ p {
 
 /*Tablets*/
 @media only screen and (min-width: 40.063em) { 
+  
+  	/*iphone 6*/
+@media only screen and (min-width: 375px)
+and (max-width: 667px){ 
 
 
 
