@@ -1,19 +1,36 @@
 <!DOCTYPE html>
+<html>
 <head>
+
+	<link rel="apple-touch-icon" sizes="57x57" href="../favicons/apple-touch-icon-57x57.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="../favicons/apple-touch-icon-60x60.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="../favicons/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="../favicons/apple-touch-icon-76x76.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="../favicons/apple-touch-icon-114x114.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="../favicons/apple-touch-icon-120x120.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="../favicons/apple-touch-icon-144x144.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="../favicons/apple-touch-icon-152x152.png">
+	<link rel="icon" type="image/png" href="../favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="../favicons/favicon-96x96.png" sizes="96x96">
+	<link rel="icon" type="image/png" href="../favicons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="../favicons/manifest.json">
+	<link rel="mask-icon" href="../favicons/safari-pinned-tab.svg" color="#5bbad5">
+	<meta name="msapplication-TileColor" content="#da532c">
+	<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+	<meta name="theme-color" content="#ffffff">
+
 	<title>PeerMarked</title>
 	<meta charset='utf-8'>
    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
    	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="../js/main.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="../stylesheets/index.css">
 	<link rel="stylesheet" href="../stylesheets/style.css">
 
-	<link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
 </head>
 
 
@@ -63,37 +80,56 @@
 		<ul>
 			<li><a class="active" href="index.html">PeerMarked</a></li>
 
+<!--     <div class="dropdown-content" id="myDropdown">
+      <a href="#">Link 1</a>
+      <a href="#">Link 2</a>
+      <a href="#">Link 3</a>
+    </div>
+  </li> -->
+
 			<div style="float:right;list-style-type:none;">
-				<li id="signUp"><a href="signUp.html"><img src="../images/menu.png" id="menu"#>Menu</a></li>
+				<li class="dropdown" id="signUp"><a id="menuDrop" href="javascript:void(0)" class="dropbtn" onclick="myFunction()">&#9776;Menu</button></li>
+			
+				<div class="dropdown-content">
+					<li><a class="dropdown-content" href="index.html#searchSpot">Search</a></li>
+					<li><a class="dropdown-content" href="index.html#aboutSpot">About</a></li>
+					<li id="recent"><a class="dropdown-content" href="index.html#recentSpot">Recent</a></li>
+
+					<li id="signUp"><a class="dropdown-content" href="signUp.html">Sign Up</a></li>
+					<li><a class="dropdown-content" href="login.html">Log In</a></li>
+				</div>
+
 			</div>
 		</ul>
 	</div>
 
 
-	<p id="comment1">Here in the sidebar is where one can leave a comment critiquing and giving feedback on an essay. Each side comment will be lined up with the area or line of the work that needs the feedback. You may also highlight sections of the work and the comment will appear beside the highlighted area.</p>
+	<p id="comment1">Here in the sidebar is where one can leave a comment correlating to the hilighted area giving feedback on an essay.</p>
 
 
 	<div id="contentMP">
-		<div id="typewriter"></div>
+		<div style="font-size:40px;" id="typewriter"></div>
 
-		<p>Peermarked is a service where one can submit essays, writings and other works to be given feed back by other website users.<span id="highlightAnimation"> You can make </span> an essay you submit part of a classroom with your tecahers and classmates, or  you may submit it to the gerneral public.You can allow people to edit it or just allow people to give you feedback, by leaving comments in the side bar, or highlighting sections that need work.</p>
+		<p>PeerMarked is a service where one can submit essays, writings and other works to be given feed back by other website users.<span class="highlight"> You can make </span> an essay you submit part of a classroom with your tecahers and classmates, or  you may submit it to the gerneral public.You can allow people to edit it or just allow people to give you feedback.</p>
 		
-		<p>Peemarked in a service made for and by students. It is intended to be a way to recive critisism on a work, from people with many differnt points of views, levels of intellect, cultural backrounds, and knowledge and experience writing. Peermarked gives an oppurtunity for work to be looked upon with a frsh set of eyes, therefore helping one get the most out of their writing.</p>
+		<p>PeerMarked in a service made for and by students. It is intended to be a way to recive critisism on a work, from people with many different points of views. Peermarked gives an oppurtunity for work to be looked upon with a fresh set of eyes, helping one get the most out of their writing.</p>
 
-		<p>To use Peermarked one must begin by creating an account. After setting up an account you then can upload pieces to be critiqued by a specific classroom, other user, or the general public. One may aslo submit it to a specific subject or field of study, to be critiqued by others that are currently involved or have vast knowledge in that field. An essay my also be submitted to simply be checked for plagiarism or to a grammar expert to be proofread. The site prevents anything from being plagiaraised by not allowing the copy and paste function to work at all, with any content on the site.</p>
+		<p>After setting up an account on PeerMarked you then can upload pieces to be critiqued by a specific classroom, user, or the general public. One may aslo submit it to a specific subject or field of study, to be critiqued by others that are currently involved or have vast knowledge in that field. An essay my also be submitted to simply be checked for plagiarism or to be proofread. The site prevents anything from being plagarized by not allowing the copy and paste function to work.</p>
 		
-		<p>Here in the sidebar is where one can leave a comment critiquing and giving feedback on an essay. Each side comment will be lined up with the area or line of the work that needs the feedback. You may also highlight sections of the work and the comment will appear beside the highlighted area.</p>
+
 
 		<div id="searchSpot">
+			<p class="subTitle">Find Papers Now!</p>
  			<input id="search" placeholder="Search..."></input>
 		</div>
 
 
-
-		<p class="subTitle" id="aboutSpot" style="text-align:center; margin-top:10%;">About</p>
-		<p class="highlight">&#149;Lorem Ipsum</p>
-		<p>&#149;Much Cool</p>
-		<p>&#149;Very Helps</p>
+		<div id="about">
+			<p class="subTitle" id="aboutSpot" style="text-align:center; margin-top:10%;">About</p>
+			<p class="highlight">&#149;Lorem Ipsum</p>
+			<p>&#149;Much Cool</p>
+			<p>&#149;Very Helps</p>
+		</div>
 
 
 
