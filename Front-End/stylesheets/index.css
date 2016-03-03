@@ -5,21 +5,11 @@
  |  __/  |  __/ |  __/ | |    | |  | | | (_| | | |    |   <  |  __/ | (_| |
  |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
                                                                            */
+
+
 #typewriter {
     font-size: 60px !important;
     font-weight: bold;
-}
-#searchSpot {
-    margin-top: 20%;
-    margin-bottom: 20%;
-}
-
-#mobileNav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .dropdown {
@@ -163,7 +153,7 @@
     font-size: 25px;
 }
 
-#searchSpot {
+#searchDiv {
     margin-top: 40%;
     margin-bottom: 40%;
 }

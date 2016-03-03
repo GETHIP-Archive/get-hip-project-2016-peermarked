@@ -5,11 +5,18 @@
  |  __/  |  __/ |  __/ | |    | |  | | | (_| | | |    |   <  |  __/ | (_| |
  |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
                                                                            */
+#mobileNav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+
 p {
 font-family: 'Arial', sans-serif;
 
 }
-
 
 .title, #typewriter {
     display: block;
@@ -89,6 +96,20 @@ li a:hover:not(.active) {
 .active {
     background-color: #032534;
 }
+
+
+/*Mobile Nav*/
+.dropdown-content {
+    width: 100%;
+    background-color: red;
+    font-size: 35px;
+}
+
+
+
+
+
+
 /*End Navbar*/
 
 a:link {

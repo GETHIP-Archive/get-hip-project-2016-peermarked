@@ -27,6 +27,7 @@ pre{
     color: #2E2E2E;
     font-size: 30px;
     margin-bottom: 20%;
+    overflow-x: hidden;
 }
 
 /* Small devices (tablets, 768px and up) */

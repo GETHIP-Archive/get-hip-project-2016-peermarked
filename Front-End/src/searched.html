@@ -39,20 +39,33 @@
 			<li><a href="#aboutSpot">About</a></li>
 			<li id="recent"><a href="#recentSpot">Recent</a></li>
 
-			<ul style="float:right;list-style-type:none;">
+			<div style="float:right;list-style-type:none;">
 				<li id="signUp"><a href="signUp.html">Sign Up</a></li>
 				<li><a href="login.html">Log In</a></li>
-			</ul>
+			</div>
 		</ul>
 	</div>
 
+
+	<!-- Mobile nav -->
 	<div id="mobileNav">
 		<ul>
 			<li><a class="active" href="index.html">PeerMarked</a></li>
 
 			<div style="float:right;list-style-type:none;">
-				<li id="signUp"><a href="signUp.html">Menu</a></li>
+				<li class="dropdown" id="signUp"><a id="menuDrop" href="#">&#9776;Menu</button></li>
 			</div>
+
+			<!-- Dropdown content -->
+			<div id="dropdown">
+				<li><a class="dropdown-content" href="index.html#searchSpot"><br>Search</a></li>
+				<li><a class="dropdown-content" href="index.html#aboutSpot">About</a></li>
+				<li id="recent"><a class="dropdown-content" href="index.html#recentSpot">Recent</a></li>
+
+				<li id="signUp"><a class="dropdown-content" href="signUp.html">Sign Up</a></li>
+				<li><a class="dropdown-content" href="login.html">Log In</a></li>
+			</div>
+
 		</ul>
 	</div>
 
