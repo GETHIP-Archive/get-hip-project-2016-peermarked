@@ -1,0 +1,165 @@
+/*
+  ____                         __  __                  _                 _ 
+ |  _ \    ___    ___   _ __  |  \/  |   __ _   _ __  | | __   ___    __| |
+ | |_) |  / _ \  / _ \ | '__| | |\/| |  / _` | | '__| | |/ /  / _ \  / _` |
+ |  __/  |  __/ |  __/ | |    | |  | | | (_| | | |    |   <  |  __/ | (_| |
+ |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
+                                                                           */
+#mobileNav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+
+p {
+font-family: 'Arial', sans-serif;
+
+}
+
+.title, #typewriter {
+    display: block;
+    font-size: 4rem;
+    text-align: center;
+    margin-top: 6%;
+    margin-bottom: 5%;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+.highlight {
+	background-color: #C6D53E;
+    width: 35%;
+}
+
+body {
+    background-color: #E5DCAE;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/*Navbar*/
+#navBar {
+    position: fixed;
+    left: 0;
+    top: 0;
+	margin: 0 auto;
+    width: 100%;
+    font-family: 'Ubuntu Condensed', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgba(0, 34, 63, 0.95);
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#menu {
+    width:30px; 
+    height:100%;
+    vertical-align: text-center;
+}
+
+li {
+    float: left;
+    border-right: 2px solid #E5DCAE; 
+}
+
+#signUp {
+    border-left: 2px solid #E5DCAE;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: #00a2a2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #032534;
+}
+
+.active {
+    background-color: #032534;
+}
+
+
+/*Mobile Nav*/
+.dropdown-content {
+    width: 100%;
+    background-color: red;
+    font-size: 35px;
+}
+
+
+
+
+
+
+/*End Navbar*/
+
+a:link {
+	text-decoration: none;
+}
+
+a:visited {
+	text-decoration: none;
+}
+
+.subTitle {
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: #242424;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+
+ ul {
+    font-size: 30px;
+ }
+
+ .subTitle {
+    font-size: 25px;
+ }
+
+ p, .highlight {
+    font-size: 25px;
+}
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

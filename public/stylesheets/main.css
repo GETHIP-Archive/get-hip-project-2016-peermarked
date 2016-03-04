@@ -1,0 +1,155 @@
+/*
+  ____                         __  __                  _                 _ 
+ |  _ \    ___    ___   _ __  |  \/  |   __ _   _ __  | | __   ___    __| |
+ | |_) |  / _ \  / _ \ | '__| | |\/| |  / _` | | '__| | |/ /  / _ \  / _` |
+ |  __/  |  __/ |  __/ | |    | |  | | | (_| | | |    |   <  |  __/ | (_| |
+ |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
+                                                                           */
+
+
+#content {
+	width: 65%;
+	margin-left: 5%;
+	background-color: #D2C2D6;
+	padding: 3%;
+	font-size: 25px;
+	margin-top: 6%;
+	margin-bottom: 10%;
+	box-shadow: 10px 10px 35px 0px rgba(0,0,0,0.75);
+	color: #2E2E2E;
+	float: left;
+}
+
+.sideContent {
+	width: 10%;
+	background-color: #D2C2D6;
+	padding: 2%;
+	font-size: 20px;
+	float: right;
+	margin-top: 12%;
+	margin-right: 5%;
+	box-shadow: 10px 10px 35px 0px rgba(0,0,0,0.75);
+}
+
+#title {
+	display: block;
+	font-size: 4rem;
+	text-align: center;
+}
+
+
+.highlight {
+	background-color: #C6D53E;
+}
+
+.contentP {
+	margin: 5%;
+}
+
+body {
+  background-color: #E5DCAE;
+}
+
+#logo {
+	width: 10%;
+}
+
+/*#footer {
+	width: 98%;
+    background-color: #00223F;
+    color: #006666;
+    padding: 1%;
+    font-size: 15px;
+}
+footer {
+	margin: 0 auto;
+}*/
+
+
+/*Navbar*/
+#navBar {
+	/*position: fixed;*/
+	margin: 0 auto;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00223F;
+    font-size: 30px;
+	font-family: 'Lobster', cursive;
+}
+
+li {
+    float: left;
+    border-right: 2px solid #E5DCAE;
+}
+
+#signUp {
+    border-left: 2px solid #E5DCAE;
+}
+
+li:last-child {
+    border-right: none;
+}
+
+li a {
+    display: block;
+    color: #00a2a2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #053C54;
+}
+
+.active {
+    background-color: #032534;
+}
+
+/*#ulNav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #00223F;
+    font-size: 35px;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    text-align: center;
+    margin-left: 250px;
+}
+
+li a:hover {
+    background-color: #111;*/
+}
+
+/*End Navbar*/
+
+a:link {
+	text-decoration: none;
+	color: #00a2a2;
+}
+
+a:visited {
+	text-decoration: none;
+	color: #00a2a2;
+}
+
+
+
+
+
+
+
+

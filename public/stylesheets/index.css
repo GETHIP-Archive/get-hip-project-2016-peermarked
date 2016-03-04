@@ -1,0 +1,196 @@
+/*
+  ____                         __  __                  _                 _ 
+ |  _ \    ___    ___   _ __  |  \/  |   __ _   _ __  | | __   ___    __| |
+ | |_) |  / _ \  / _ \ | '__| | |\/| |  / _` | | '__| | |/ /  / _ \  / _` |
+ |  __/  |  __/ |  __/ | |    | |  | | | (_| | | |    |   <  |  __/ | (_| |
+ |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
+                                                                           */
+
+
+#typewriter {
+    font-size: 60px !important;
+    font-weight: bold;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.tags {
+    float: right;
+    width: 10%;
+    margin-right: 10%;
+}
+
+.tag {
+    color: rgba(0,0,0,0.30);
+}
+
+.tag:hover {
+    color: rgba(0,0,0,0.60);
+    text-decoration: underline;
+}
+
+.author, .tags {
+    font-size: 20px;
+    color: rgba(0,0,0,0.30);
+}
+
+.paperTitles {
+    height: 100%;
+    padding: 1%;
+}
+
+.paperTitles:hover {
+    background-color: rgba(0,0,0,0.20);
+}
+
+#uploadedPapers {
+    width: 97%;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 300px;
+    padding: 1%;
+    background-color: #d9d9d9;
+    border: 3px solid rgba(0,0,0,0.20);
+    box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.30);
+}
+
+#search {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    background-color: #d9d9d9;
+    border-color: rgba(0,0,0,0.20); 
+    border-width: 3px; 
+    border-style: solid; 
+    box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.30); 
+    padding: 1%;
+    font-size: 25px;
+    border-radius: 10px;
+}
+
+#search:focus {
+    outline: none;
+}
+
+#input1:focus {
+    outline: none;
+}
+
+#logo {
+    width: 200%;
+    height: 200%;
+    display: inline-block;
+}
+
+#contentMP {
+    width: 65%;
+    margin-left: 5%;
+    background-color: #d9d9d9;
+    padding: 3%;
+    font-size: 25px;
+    margin-top: 10%;
+    margin-bottom: 20%;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    color: #2E2E2E;
+    float: left;
+    font-size: 30px;
+}
+
+#comment1, #comment2 {
+	width: 10%;
+	background-color: #d9d9d9;
+	padding: 2%;
+	font-size: 20px;
+	float: right;
+	margin-right: 5%;
+    box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.75);
+    color: #2E2E2E;
+}
+
+#comment1 {
+    margin-top: 20%;
+}
+
+/*#comment2 {
+    margin-right: -15%;
+    margin-top: 60%;
+}*/
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+
+#comment1 {
+    display: none;
+}
+
+#contentMP {
+    width: 80%;
+    background-color: #d9d9d9;
+    padding: 5%;
+    margin-top: 20%;
+}
+
+#search {
+    width: 96%;
+    padding: 1%;
+    font-size: 25px;
+}
+
+#searchDiv {
+    margin-top: 40%;
+    margin-bottom: 40%;
+}
+
+#about {
+    margin-top: 40%;
+    margin-bottom: 40%;
+}
+
+
+    
+
+}
+
+/*Tablets*/
+@media only screen and (min-width: 40.063em) { 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

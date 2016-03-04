@@ -1,0 +1,96 @@
+/*
+  ____                         __  __                  _                 _ 
+ |  _ \    ___    ___   _ __  |  \/  |   __ _   _ __  | | __   ___    __| |
+ | |_) |  / _ \  / _ \ | '__| | |\/| |  / _` | | '__| | |/ /  / _ \  / _` |
+ |  __/  |  __/ |  __/ | |    | |  | | | (_| | | |    |   <  |  __/ | (_| |
+ |_|      \___|  \___| |_|    |_|  |_|  \__,_| |_|    |_|\_\  \___|  \__,_|
+                                                                           */
+#button {
+    display: block;
+    margin: 0 auto;
+    padding: 2%;
+    width: 20%;
+    text-decoration: none;
+    text-align: center;
+    color: #00a2a2;
+    font-size: 30px;
+    background-color: #00223F;
+
+}
+
+#button:hover {
+    background-color:#053C54;
+    color: #00a2a2;
+}
+
+#titleInput {
+    display: block;
+    width: 96%;
+    text-align: center;
+    color: #2E2E2E;
+    font-size: 50px;
+    border: none;
+    margin-bottom: 5%;
+    box-shadow: none;
+}
+
+input {
+    background-color: #d9d9d9;
+    border-color: rgba(0,0,0,0.20); 
+    border-width: 3px; 
+    border-style: solid; 
+    box-shadow: inset 0px 0px 17px 0px rgba(0,0,0,0.30); 
+    font-size: 25px; 
+    padding: 2%; 
+    width: 100%;
+    border-radius: 10px;
+    color: #2E2E2E;
+}
+
+input:focus {
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    font-size: 30px;
+    color: #2E2E2E;
+    background-color: #d9d9d9;
+    border: none;
+}
+
+textarea:focus {
+    outline: none;
+}
+
+#contentLoggedIn {
+    margin: 0 auto;
+    width: 65%;
+    background-color: #d9d9d9;
+    padding: 3%;
+    font-size: 25px;
+    margin-top: 10%;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    color: #2E2E2E;
+    font-size: 30px;
+    margin-bottom: 20%;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media only screen and (max-width: 768px) {
+
+
+
+/*Tablets*/
+@media only screen and (min-width: 40.063em) { 
+
+
+
+
+
+
+
+
+
+
+
